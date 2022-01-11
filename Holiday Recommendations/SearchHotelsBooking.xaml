@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="infoDT" Type="InArgument(sd:DataTable)" />
     <x:Property Name="outputExcel" Type="InArgument(x:String)" />
+    <x:Property Name="config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>837,4818</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>620,4656</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SearchHotelsBooking_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
@@ -48,7 +49,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="58">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -78,35 +79,36 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SearchHotelsBooking" sap:VirtualizedContainerService.HintSize="630,4015" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SearchHotelsBooking" sap:VirtualizedContainerService.HintSize="630.4,4591.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="588,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Search hotels for each city" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Iterate through all lines of excel to get results for each city." DataTable="[infoDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="588,3828" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:Comment sap:VirtualizedContainerService.HintSize="588.8,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Search hotels for each city" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Iterate through all lines of excel to get results for each city." DataTable="[infoDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="588.8,4402.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="554,3677" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="555.2,4250.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If sap2010:Annotation.AnnotationText="If the user marked the &quot;Hotels&quot; column with &quot;x&quot; we search for hotels, otherwise we move to the next city." Condition="[CurrentRow(&quot;Hotels&quot;).ToString.Trim.Equals(&quot;x&quot;)]" sap:VirtualizedContainerService.HintSize="512,3585" sap2010:WorkflowViewState.IdRef="If_1">
+            <If sap2010:Annotation.AnnotationText="If the user marked the &quot;Hotels&quot; column with &quot;x&quot; we search for hotels, otherwise we move to the next city." Condition="[CurrentRow(&quot;Hotels&quot;).ToString.Trim.Equals(&quot;x&quot;)]" sap:VirtualizedContainerService.HintSize="513.6,4157.6" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="476,3356" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence sap:VirtualizedContainerService.HintSize="478.4,3924.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Int32" Name="checkInDay" />
                     <Variable x:TypeArguments="x:Int64" Name="nrArrowClicksCheckIn" />
@@ -130,8 +132,8 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Starting to retrieve hotel info for &quot; + CurrentRow(&quot;City&quot;).ToString]" />
-                  <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Starting to retrieve hotel info for &quot; + CurrentRow(&quot;City&quot;).ToString]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="436.8,60" sap2010:WorkflowViewState.IdRef="Assign_18">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[city]</OutArgument>
                     </Assign.To>
@@ -139,7 +141,7 @@
                       <InArgument x:TypeArguments="x:String">[CurrentRow("City").ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <TryCatch DisplayName="Try Catch - Check if Check-In date is valid" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                  <TryCatch DisplayName="Try Catch - Check if Check-In date is valid" sap:VirtualizedContainerService.HintSize="436.8,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -178,7 +180,7 @@
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
-                  <TryCatch DisplayName="Try Catch - Check if Check-Out date is valid" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <TryCatch DisplayName="Try Catch - Check if Check-Out date is valid" sap:VirtualizedContainerService.HintSize="436.8,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -217,9 +219,9 @@
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
-                  <p:CompareDate DisplayName="Compare check-in date to current date" sap:VirtualizedContainerService.HintSize="434,132" sap2010:WorkflowViewState.IdRef="CompareDate_1" Left="[Now]" Result="[current_checkIn]" Right="[checkInDate]" />
-                  <p:CompareDate DisplayName="Compare check-out date to check-in date" sap:VirtualizedContainerService.HintSize="434,132" sap2010:WorkflowViewState.IdRef="CompareDate_2" Left="[checkInDate]" Result="[checkIn_checkOut]" Right="[checkOutDate]" />
-                  <If sap2010:Annotation.AnnotationText="Verifiy that check-in - check-out interval is valid for booking." Condition="[current_checkIn &gt; 0 or checkIn_checkOut &gt;= 0]" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="If_7">
+                  <p:CompareDate DisplayName="Compare check-in date to current date" sap:VirtualizedContainerService.HintSize="436.8,134.4" sap2010:WorkflowViewState.IdRef="CompareDate_1" Left="[Now]" Result="[current_checkIn]" Right="[checkInDate]" />
+                  <p:CompareDate DisplayName="Compare check-out date to check-in date" sap:VirtualizedContainerService.HintSize="433.6,134.4" sap2010:WorkflowViewState.IdRef="CompareDate_2" Left="[checkInDate]" Result="[checkIn_checkOut]" Right="[checkOutDate]" />
+                  <If sap2010:Annotation.AnnotationText="Verifiy that check-in - check-out interval is valid for booking." Condition="[current_checkIn &gt; 0 or checkIn_checkOut &gt;= 0]" sap:VirtualizedContainerService.HintSize="433.6,112.8" sap2010:WorkflowViewState.IdRef="If_7">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -240,7 +242,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <Assign sap2010:Annotation.AnnotationText="Compute the number of months between the current date and the check-in date to know how many times to click &quot;next month&quot; on the calendar." sap:VirtualizedContainerService.HintSize="434,132" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign sap2010:Annotation.AnnotationText="Compute the number of months between the current date and the check-in date to know how many times to click &quot;next month&quot; on the calendar." sap:VirtualizedContainerService.HintSize="436.8,136" sap2010:WorkflowViewState.IdRef="Assign_5">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int64">[nrArrowClicksCheckIn]</OutArgument>
                     </Assign.To>
@@ -253,7 +255,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <Assign sap2010:Annotation.AnnotationText="Compute the number of months between the check-in date and the check-out date to know how many more times to click &quot;next month&quot; on the calendar." sap:VirtualizedContainerService.HintSize="434,147" sap2010:WorkflowViewState.IdRef="Assign_10">
+                  <Assign sap2010:Annotation.AnnotationText="Compute the number of months between the check-in date and the check-out date to know how many more times to click &quot;next month&quot; on the calendar." sap:VirtualizedContainerService.HintSize="436.8,136" sap2010:WorkflowViewState.IdRef="Assign_10">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int64">[nrArrowClicksCheckOut]</OutArgument>
                     </Assign.To>
@@ -266,7 +268,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <Assign sap2010:Annotation.AnnotationText="Extract the day from the check-in date." sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="Assign_8">
+                  <Assign sap2010:Annotation.AnnotationText="Extract the day from the check-in date." sap:VirtualizedContainerService.HintSize="436.8,91.2" sap2010:WorkflowViewState.IdRef="Assign_8">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[checkinDay]</OutArgument>
                     </Assign.To>
@@ -279,7 +281,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <Assign sap2010:Annotation.AnnotationText="Extract the day from the check-out date." sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="Assign_12">
+                  <Assign sap2010:Annotation.AnnotationText="Extract the day from the check-out date." sap:VirtualizedContainerService.HintSize="436.8,91.2" sap2010:WorkflowViewState.IdRef="Assign_12">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[checkOutDay]</OutArgument>
                     </Assign.To>
@@ -292,7 +294,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <TryCatch DisplayName="Try Catch - Check if number of adults is valid" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                  <TryCatch DisplayName="Try Catch - Check if number of adults is valid" sap:VirtualizedContainerService.HintSize="436.8,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -331,7 +333,7 @@
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
-                  <If sap2010:Annotation.AnnotationText="Check that number of adults is greater or equal to 1." Condition="[adults &lt; 1]" sap:VirtualizedContainerService.HintSize="434,93" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If sap2010:Annotation.AnnotationText="Check that number of adults is greater or equal to 1." Condition="[adults &lt; 1]" sap:VirtualizedContainerService.HintSize="436.8,96.8" sap2010:WorkflowViewState.IdRef="If_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -352,7 +354,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <TryCatch DisplayName="Try Catch - Check if number of rooms is valid" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                  <TryCatch DisplayName="Try Catch - Check if number of rooms is valid" sap:VirtualizedContainerService.HintSize="436.8,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -391,7 +393,7 @@
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
-                  <If sap2010:Annotation.AnnotationText="Check that number of rooms is greater or equal to 1." Condition="[rooms &lt; 1]" sap:VirtualizedContainerService.HintSize="434,93" sap2010:WorkflowViewState.IdRef="If_5">
+                  <If sap2010:Annotation.AnnotationText="Check that number of rooms is greater or equal to 1." Condition="[rooms &lt; 1]" sap:VirtualizedContainerService.HintSize="436.8,96.8" sap2010:WorkflowViewState.IdRef="If_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -412,7 +414,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <TryCatch DisplayName="Try Catch - Check if hotel stars are valid" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                  <TryCatch DisplayName="Try Catch - Check if hotel stars are valid" sap:VirtualizedContainerService.HintSize="436.8,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -498,7 +500,7 @@
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
-                  <TryCatch DisplayName="Try Catch - Check if maximum price per night is valid" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+                  <TryCatch DisplayName="Try Catch - Check if maximum price per night is valid" sap:VirtualizedContainerService.HintSize="436.8,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_8">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -537,7 +539,7 @@
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
-                  <If sap2010:Annotation.AnnotationText="Convert max price per night into Booking.com format (ex. 1500 -&gt; 1,500)." Condition="[maxBudget &gt; 999]" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="If_8">
+                  <If sap2010:Annotation.AnnotationText="Convert max price per night into Booking.com format (ex. 1500 -&gt; 1,500)." Condition="[maxBudget &gt; 999]" sap:VirtualizedContainerService.HintSize="436.8,112.8" sap2010:WorkflowViewState.IdRef="If_8">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -546,7 +548,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                      <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_23">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:String">[maxBudgetBooking]</OutArgument>
                         </Assign.To>
@@ -556,7 +558,7 @@
                       </Assign>
                     </If.Then>
                     <If.Else>
-                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+                      <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_24">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:String">[maxBudgetBooking]</OutArgument>
                         </Assign.To>
@@ -566,19 +568,36 @@
                       </Assign>
                     </If.Else>
                   </If>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Hotel info for &quot; + city + &quot; successfully retrieved&quot;]" />
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EnterTripInfo workflow" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="EnterTripInfo.xaml">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Hotel info for &quot; + city + &quot; successfully retrieved&quot;]" />
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EnterTripInfo workflow" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="EnterTripInfo.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:Int64" x:Key="nrArrowClicksCheckIn">[nrArrowClicksCheckIn]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="city">[city]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="checkInDay">[checkInDay]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="checkOutDay">[checkOutDay]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="adults">[adults]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="rooms">[rooms]</InArgument>
-                      <InArgument x:TypeArguments="x:Int64" x:Key="nrArrowClicksCheckOut">[nrArrowClicksCheckOut]</InArgument>
+                      <InArgument x:TypeArguments="x:Int64" x:Key="nrArrowClicksCheckIn">
+                        <mva:VisualBasicValue x:TypeArguments="x:Int64" ExpressionText="nrArrowClicksCheckIn" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="city">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="city" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="checkInDay">
+                        <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="checkInDay" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="checkOutDay">
+                        <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="checkOutDay" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="adults">
+                        <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="adults" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="rooms">
+                        <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="rooms" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int64" x:Key="nrArrowClicksCheckOut">
+                        <mva:VisualBasicValue x:TypeArguments="x:Int64" ExpressionText="nrArrowClicksCheckOut" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="config">
+                        <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="config" />
+                      </InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <TryCatch sap2010:Annotation.AnnotationText="If there are no hotels with the requested criteria, write this in excel." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,377" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+                  <TryCatch sap2010:Annotation.AnnotationText="If there are no hotels with the requested criteria, write this in excel." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="436.8,911.2" sap2010:WorkflowViewState.IdRef="TryCatch_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -587,13 +606,13 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <TryCatch.Try>
-                      <Sequence sap:VirtualizedContainerService.HintSize="376,642" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,648.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FilterHotels workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="FilterHotels.xaml">
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FilterHotels workflow" sap:VirtualizedContainerService.HintSize="334.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="FilterHotels.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
                             <InArgument x:TypeArguments="x:Int32" x:Key="minHotelStars">[minHotelStars]</InArgument>
                             <InArgument x:TypeArguments="x:Int32" x:Key="maxHotelStars">[maxHotelStars]</InArgument>
@@ -602,21 +621,21 @@
                             <InArgument x:TypeArguments="x:String" x:Key="maxBudgetBooking">[maxBudgetBooking]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExtractHotelsInfo workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="ExtractHotelsInfo.xaml">
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExtractHotelsInfo workflow" sap:VirtualizedContainerService.HintSize="334.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="ExtractHotelsInfo.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
                             <OutArgument x:TypeArguments="sd:DataTable" x:Key="HotelsInfoDT">[HotelsInfoDT]</OutArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="city">[city]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Writing results for hotels in &quot; + city]" />
-                        <ui:WriteRange AddHeaders="True" DataTable="[HotelsInfoDT]" DisplayName="Write Hotels for current city" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[&quot;Hotels &quot; + city]" StartingCell="A1" WorkbookPath="[outputExcel]" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Writing results for hotels in &quot; + city]" />
+                        <ui:WriteRange AddHeaders="True" DataTable="[HotelsInfoDT]" DisplayName="Write Hotels for current city" sap:VirtualizedContainerService.HintSize="334.4,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[&quot;Hotels &quot; + city]" StartingCell="A1" WorkbookPath="[outputExcel]" />
                       </Sequence>
                     </TryCatch.Try>
                     <TryCatch.Catches>
-                      <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,184" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+                      <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_6">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -624,24 +643,24 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
                           </ActivityAction.Argument>
-                          <ui:WriteCell Cell="A1" DisplayName="Write &quot;There were no hotels found&quot;" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[&quot;Hotels &quot; + city]" Text="[exception.Message]" WorkbookPath="[outputExcel]" />
+                          <ui:WriteCell Cell="A1" DisplayName="Write &quot;There were no hotels found&quot;" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[&quot;Hotels &quot; + city]" Text="[exception.Message]" WorkbookPath="[outputExcel]" />
                         </ActivityAction>
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
-                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe Booking.com'" sap:VirtualizedContainerService.HintSize="434,260" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="21c50005116027270d9d07d7e51d7e3d" Selector="&lt;html app='chrome.exe' title='Booking.com*' /&gt;">
+                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe Booking.com'" sap:VirtualizedContainerService.HintSize="433.6,262.4" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="21c50005116027270d9d07d7e51d7e3d" Selector="&lt;html app='chrome.exe' title='Booking.com*' /&gt;">
                     <ui:BrowserScope.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Close browser" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                        <Sequence DisplayName="Close browser" sap:VirtualizedContainerService.HintSize="241.6,115.2" sap2010:WorkflowViewState.IdRef="Sequence_28">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+                          <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
                         </Sequence>
                       </ActivityAction>
                     </ui:BrowserScope.Body>

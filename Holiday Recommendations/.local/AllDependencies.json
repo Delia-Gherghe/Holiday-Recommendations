@@ -7614,15 +7614,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ioana\\.nuget\\packages\\": {}
+    "C:\\Users\\vulpo\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Holiday Recommendations",
       "projectName": "Holiday Recommendations",
-      "projectPath": "C:\\Users\\Ioana\\Desktop\\RPA-UiPath\\Holiday-Recommendations\\Holiday Recommendations\\.local",
-      "packagesPath": "C:\\Users\\Ioana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ioana\\Desktop\\RPA-UiPath\\Holiday-Recommendations\\Holiday Recommendations\\.local"
+      "projectPath": "C:\\Users\\vulpo\\Desktop\\Facultate\\Licenta\\Anul 3\\Semestrul 1\\RPA_UiPath\\Laborator\\Holiday-Recommendations\\Holiday Recommendations\\.local",
+      "packagesPath": "C:\\Users\\vulpo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vulpo\\Desktop\\Facultate\\Licenta\\Anul 3\\Semestrul 1\\RPA_UiPath\\Laborator\\Holiday-Recommendations\\Holiday Recommendations\\.local"
     },
     "frameworks": {
       "net461": {
@@ -7653,7 +7653,7 @@
             "version": "[21.10.3, 21.10.3]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\Ioana\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\vulpo\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
@@ -7661,5 +7661,18 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Microsoft.Extensions.Primitives 3.1.6 depends on System.Memory (>= 4.5.2) but System.Memory 4.5.2 was not found. An approximate best match of System.Memory 4.5.3 was resolved.",
+      "libraryId": "System.Memory",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.6.1",
+        ".NETFramework,Version=v4.6.1/win10-x64"
+      ]
+    }
+  ]
 }
