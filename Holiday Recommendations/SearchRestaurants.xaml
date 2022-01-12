@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1159.2,6693.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1159.2,6469.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SearchRestaurants_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -79,7 +79,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SearchRestaurants" sap:VirtualizedContainerService.HintSize="1092.8,6628.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SearchRestaurants" sap:VirtualizedContainerService.HintSize="1092.8,6404.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="restaurantPrices" />
       <Variable x:TypeArguments="x:String" Name="city" />
@@ -94,26 +94,26 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:Comment sap:VirtualizedContainerService.HintSize="1051.2,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Search restaurants for each city" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[infoDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1051.2,6440" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[infoDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1051.2,6216" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1017.6,6319.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1017.6,6095.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If sap2010:Annotation.AnnotationText="If the user marked the &quot;Restaurants&quot; column with &quot;x&quot; we search for restaurants, otherwise we move to the next city." Condition="[CurrentRow(&quot;Restaurants&quot;).ToString.Trim.Equals(&quot;x&quot;)]" DisplayName="If" sap:VirtualizedContainerService.HintSize="976,6226.4" sap2010:WorkflowViewState.IdRef="If_2">
+            <If sap2010:Annotation.AnnotationText="If the user marked the &quot;Restaurants&quot; column with &quot;x&quot; we search for restaurants, otherwise we move to the next city." Condition="[CurrentRow(&quot;Restaurants&quot;).ToString.Trim.Equals(&quot;x&quot;)]" DisplayName="If" sap:VirtualizedContainerService.HintSize="976,6002.4" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="940.8,6006.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence sap:VirtualizedContainerService.HintSize="940.8,5782.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="restaurantsLoaded" />
                   </Sequence.Variables>
@@ -322,13 +322,13 @@
                       <InArgument x:TypeArguments="x:Int32">0</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="Select the price options specified for the restaurant" sap:VirtualizedContainerService.HintSize="899.2,620" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[restaurantPrices]">
+                  <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="Select the price options specified for the restaurant" sap:VirtualizedContainerService.HintSize="899.2,700" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[restaurantPrices]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="538.4,495.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="538.4,575.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -342,7 +342,8 @@
                               <InArgument x:TypeArguments="x:String">[item.ToString.Trim.ToLower]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[priceOption]" sap:VirtualizedContainerService.HintSize="496.8,302.4" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[&quot;Price option is: '&quot; + priceOption + &quot;'&quot;]" />
+                          <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[priceOption]" sap:VirtualizedContainerService.HintSize="496.8,187.2" sap2010:WorkflowViewState.IdRef="Switch`1_1">
                             <Switch.Default>
                               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;'&quot; + priceOption + &quot;' is not a valid option&quot;]" />
                             </Switch.Default>
@@ -352,7 +353,7 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence x:Key="low" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                            <Sequence x:Key="low" sap:VirtualizedContainerService.HintSize="375.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_22">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -428,10 +429,10 @@
                                 </Assign.Value>
                               </Assign>
                             </Sequence>
-                            <Sequence x:Key="high" sap:VirtualizedContainerService.HintSize="375.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                            <Sequence x:Key="high" sap:VirtualizedContainerService.HintSize="375.2,300" sap2010:WorkflowViewState.IdRef="Sequence_24">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
@@ -467,6 +468,7 @@
                               </Assign>
                             </Sequence>
                           </Switch>
+                          <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="496.8,22.4" sap2010:WorkflowViewState.IdRef="Delay_3" />
                         </Sequence>
                       </ActivityAction>
                     </ui:ForEach.Body>
@@ -485,13 +487,13 @@
                       <InArgument x:TypeArguments="s:String[]">[Split(CurrentRow("Meals").ToString.Trim, ",")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="899.2,894.4" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[meals]">
+                  <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="899.2,590.4" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[meals]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="538.4,769.6" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="538.4,465.6" sap2010:WorkflowViewState.IdRef="Sequence_27">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="mealOption" />
                           </Sequence.Variables>
@@ -508,7 +510,7 @@
                               <InArgument x:TypeArguments="x:String">[item.ToString.Trim.ToLower]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[mealOption]" sap:VirtualizedContainerService.HintSize="496.8,576.8" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+                          <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[mealOption]" sap:VirtualizedContainerService.HintSize="496.8,210.4" sap2010:WorkflowViewState.IdRef="Switch`1_3">
                             <Switch.Default>
                               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;'&quot; + mealOption + &quot;' is not a valid option&quot;]" />
                             </Switch.Default>
@@ -662,6 +664,7 @@
                               </Assign>
                             </Sequence>
                           </Switch>
+                          <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="496.8,22.4" sap2010:WorkflowViewState.IdRef="Delay_4" />
                         </Sequence>
                       </ActivityAction>
                     </ui:ForEach.Body>
